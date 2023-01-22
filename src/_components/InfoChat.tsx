@@ -1,7 +1,7 @@
 import React from 'react';
 import info from '../info.svg'
 
-function App() {
+function InfoChat() {
   var recordings = [
     {id: 1, text: 'Message with recording', value: 'Recording'},
     {id: 2, text: 'Message with audio only', value: 'Audio'},
@@ -29,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default InfoChat;
