@@ -65,7 +65,7 @@ function InfoChat(props : any) {
   );
 
   return (
-    <div className='infoChat'>
+    <div className={props.isRecActive ? '' : 'infoChat'}>
       <span style={{display: isPopUpShown ? 'none' : 'flex'}} className="infoChat_popup-modal">
         <span className='infoChat_popup infoChat_popup-modal_inner'>
             <h3 className='infoChat_popup-title'>
@@ -83,7 +83,7 @@ function InfoChat(props : any) {
             </div>
         </span>
       </span>
-      <img onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
+      <img style={{display: props.isRecActive ? 'none' : 'flex'}} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
       <div style={{display: isDropdownShown || timer === 0 ? 'none' : 'flex'}} className="countdown">
         <div className='countdown_inner'>
           {timer}

@@ -163,6 +163,13 @@
   display: grid;
 }
 
+.send_rec-inner_text {
+  text-align: center;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+}
+
 .send_rec-inner_btn {
   width: 210px;
   background-color: #007FFF;
@@ -175,6 +182,10 @@
   color: white;
   border: none;
   margin-left: auto;
+}
+
+.send_rec-inner_btn-img {
+  border: none !important;
 }
 
 .send_rec-inner_btn:hover {
