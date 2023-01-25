@@ -10,7 +10,6 @@ function RecordingTab(props:any) {
     };
 
     function pauseRecording() {
-        console.log('pause recording')
     }
 
     function stopRecording() {

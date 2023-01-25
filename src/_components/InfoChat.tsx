@@ -4,7 +4,6 @@ import {useState, useEffect} from 'react';
 import closeBtn from '../../src/assets/black_close.svg';
 
 function InfoChat(props : any) {
-  console.log(props);
   var dropdownClass = '';
   var recordings = [
     {id: 1, text: 'Message with recording', state: 'Recording'},
