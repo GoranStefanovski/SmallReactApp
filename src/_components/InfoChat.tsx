@@ -5,6 +5,8 @@ import closeBtn from '../../src/assets/black_close.svg';
 import { toggle } from '../../src/features/recording/recordingSlice'
 import { isMessage } from '../../src/features/message/messageSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { isCounting } from '../../src/features/counting/countingSlice'
+
 function InfoChat(props : any) {
   const isRecording = useSelector((state: any) => state.recording.value);
   const dispatch = useDispatch();
@@ -45,6 +47,7 @@ function InfoChat(props : any) {
       setIsCountdownShown(current => !current);
       setTimeout(() => {
         dispatch(toggle());
+        dispatch(isCounting());
       }, 3000);
     }
     dropdownClass = '';
@@ -70,7 +73,7 @@ function InfoChat(props : any) {
   }
 
   const listItems = recordings.map((object) =>
-    <ListItem key={object.text.toString()} value={object.state} text={object.text}/>
+    <ListItem key={object.text.toString()} value={object.state} text={object.text} />
   );
 
   return (
@@ -86,9 +89,11 @@ function InfoChat(props : any) {
               <ul className='infoChat_popup-list'>
                 {!isDropdownShown ? listItems : ''}
               </ul>
-              <ul className='infoChat_popup-list-md'>
-                {isPopUpShown ? listItems : ''}
-              </ul> 
+              {isPopUpShown ? <div className='infoChat_popup-list-md-wrap'>
+                <ul className='infoChat_popup-list-md'>
+                   {listItems} 
+                </ul>
+              </div> : ''}
             </div>
         </span>
       </span>
