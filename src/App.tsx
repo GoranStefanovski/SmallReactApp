@@ -4,22 +4,21 @@ import InfoChat from './_components/InfoChat';
 import RecordingTab from './_components/RecordingTab';
 import SendRecording from './_components/SendRecording';
 import FinalStep from './_components/FinalStep';
-
-
+import { useSelector } from 'react-redux'
 
 const App = ( store: any) => {
-
-  const [IsRecordingDone, setIsRecordingDone] = useState(false);
+  const isRecording = useSelector((state: any) => state.recording.value);
+  const isSendMessage = useSelector((state: any) => state.message.value);
   const [isFinalStep, setItFinalStep] = useState(false);
 
   return (
     <div className="App">
       <header className="App-header">
         <InfoChat></InfoChat>
-        <RecordingTab setIsRecordingDone={setIsRecordingDone}></RecordingTab>
-        { IsRecordingDone ? <SendRecording isRecDone={IsRecordingDone} setIsRecordingDone={setIsRecordingDone} setItFinalStep={setItFinalStep}></SendRecording> : ''
+        <RecordingTab></RecordingTab>
+        { !isRecording && isSendMessage ? <SendRecording setItFinalStep={setItFinalStep}></SendRecording> : ''
         }
-        { isFinalStep ? <FinalStep setItFinalStep={setItFinalStep} setIsRecordingDone={setIsRecordingDone}></FinalStep> : ''
+        { isFinalStep ? <FinalStep setItFinalStep={setItFinalStep}></FinalStep> : ''
         }
       </header>
     </div>

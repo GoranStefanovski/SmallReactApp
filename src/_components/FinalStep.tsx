@@ -1,9 +1,12 @@
 import IssueReported from '../assets/IssueReported.svg'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { isMessage } from '../../src/features/message/messageSlice'
 function FinalStep(props: any) {
-    function sendIssue() {
+  const dispatch = useDispatch();
+  function sendIssue() {
         props.setItFinalStep(false)
-        props.setIsRecordingDone(false)
+        dispatch(isMessage())
+
     }
   return (
     <div className='countdown'>
