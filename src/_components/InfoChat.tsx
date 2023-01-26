@@ -11,8 +11,8 @@ function InfoChat(props : any) {
     {id: 3, text: 'Message only', state: 'Message'},
   ];
 
-  const [isPopUpShown, setIsPopUpShown] = useState(true);
-  const [isDropdownShown, setIsDropdownShown] = useState(true);
+  const [isPopUpShown, setIsPopUpShown] = useState(false);
+  const [isDropdownShown, setIsDropdownShown] = useState(false);
   const [selectedValue, setIsselectedValue] = useState('Recordings');
   const [isCountdownShown, setIsCountdownShown] = useState(false);
   const [timer, setTimer] = useState(3);
@@ -36,6 +36,7 @@ function InfoChat(props : any) {
     setIsPopUpShown(current => !current);
     setIsDropdownShown(current => !current);
     setIsCountdownShown(current => !current);
+    console.log(isCountdownShown);
     setTimeout(() => {
       props.setIsRecording(true);
     }, 3000);
@@ -43,13 +44,17 @@ function InfoChat(props : any) {
   }
 
   useEffect(() => {
+    console.log(isCountdownShown, ' od use effect')
     if (isCountdownShown && timer > 0) {
       const intervalId = setTimeout(() => {
         setTimer(timer - 1);
       }, 1000);
+      console.log('If')
       return () => clearInterval(intervalId);
     } else if (!isCountdownShown) {
       setTimer(3);
+      setIsCountdownShown(current => !current);
+      console.log('else')
     }
   }, [isCountdownShown, timer]);
 
@@ -66,7 +71,7 @@ function InfoChat(props : any) {
 
   return (
     <div className={props.isRecActive ? '' : 'infoChat'}>
-      <span style={{display: isPopUpShown ? 'none' : 'flex'}} className="infoChat_popup-modal">
+      <span style={{display: !isPopUpShown ? 'none' : 'flex'}} className="infoChat_popup-modal">
         <span className='infoChat_popup infoChat_popup-modal_inner'>
             <h3 className='infoChat_popup-title'>
               Having an issue? Send <br className='infoChat_popup-title-break'></br> us a recording of it!
@@ -75,16 +80,16 @@ function InfoChat(props : any) {
               <input value={selectedValue} onClick={OpenDropdown} className={'infoChat_popup-dropdown ' + dropdownClass} type="text" readOnly />
                <span className='infoChat_popup_modal-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
               <ul className='infoChat_popup-list'>
-                {isDropdownShown ? listItems : ''}
+                {!isDropdownShown ? listItems : ''}
               </ul>
               <ul className='infoChat_popup-list-md'>
-                {!isPopUpShown ? listItems : ''}
+                {isPopUpShown ? listItems : ''}
               </ul> 
             </div>
         </span>
       </span>
       <img style={{display: props.isRecActive ? 'none' : 'flex'}} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
-      <div style={{display: isDropdownShown || timer === 0 ? 'none' : 'flex'}} className="countdown">
+      <div style={{display: !isDropdownShown || timer === 0 ? 'none' : 'flex'}} className="countdown">
         <div className='countdown_inner'>
           {timer}
         </div>

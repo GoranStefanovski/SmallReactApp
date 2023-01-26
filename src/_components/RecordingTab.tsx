@@ -19,17 +19,17 @@ function RecordingTab(props:any) {
     
   return (
     <div style={{display: props.isRecActive ? 'flex' : 'none'}} className='recording'>
-        <div className='recording_inner'>
-        <span className='recording-time'>
+        <div className='recording_inner recording_inner-rotate'>
+        <span className='recording-time recording_inner-rotate'>
             00:00
         </span>
-        <span onClick={pauseRecording} className='control recording-pause'>
+        <span onClick={pauseRecording} className='control recording-pause recording_inner-rotate'>
             <img src={pauseBtn} alt=""/>
         </span>
-        <span onClick={stopRecording} className='control recording-stop'>
+        <span onClick={stopRecording} className='control recording-stop recording_inner-rotate'>
         <img  src={StopBtn} alt=""/>
         </span>
-        <span onClick={closePopUp} className='control recording-close'>
+        <span onClick={closePopUp} className='control recording-close recording_inner-rotate'>
             <img src={CloseBtn} alt=""/>
         </span>
         </div>
