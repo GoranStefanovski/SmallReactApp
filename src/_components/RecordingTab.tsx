@@ -1,11 +1,16 @@
 import pauseBtn from '../../src/assets/Pause.svg'
 import StopBtn from '../../src/assets/Stop.svg'
 import CloseBtn from '../../src/assets/Close.svg'
+import { toggle } from '../../src/features/recording/recordingSlice'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 
 function RecordingTab(props:any) {
+    const count = useSelector((state: any) => state.recording.value)
+    const dispatch = useDispatch();
     const closePopUp = () => {
-        props.setIsRecording(false);
+        dispatch(toggle())
         props.setIsRecordingDone(true);
     };
 
@@ -13,12 +18,12 @@ function RecordingTab(props:any) {
     }
 
     function stopRecording() {
-        props.setIsRecording(false);
+        dispatch(toggle())
         props.setIsRecordingDone(true);
     }
     
   return (
-    <div style={{display: props.isRecActive ? 'flex' : 'none'}} className='recording'>
+    <div style={{display: count ? 'flex' : 'none'}} className='recording'>
         <div className='recording_inner recording_inner-rotate'>
         <span className='recording-time recording_inner-rotate'>
             00:00

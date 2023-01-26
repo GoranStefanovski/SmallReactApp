@@ -2,8 +2,11 @@ import React from 'react';
 import info from '../assets/info.svg'
 import {useState, useEffect} from 'react';
 import closeBtn from '../../src/assets/black_close.svg';
-
+import { toggle } from '../../src/features/recording/recordingSlice'
+import { useSelector, useDispatch } from 'react-redux'
 function InfoChat(props : any) {
+  const count = useSelector((state: any) => state.recording.value)
+  const dispatch = useDispatch();
   var dropdownClass = '';
   var recordings = [
     {id: 1, text: 'Message with recording', state: 'Recording'},
@@ -38,7 +41,7 @@ function InfoChat(props : any) {
     setIsCountdownShown(current => !current);
     console.log(isCountdownShown);
     setTimeout(() => {
-      props.setIsRecording(true);
+      dispatch(toggle());
     }, 3000);
     dropdownClass = '';
   }
@@ -49,12 +52,10 @@ function InfoChat(props : any) {
       const intervalId = setTimeout(() => {
         setTimer(timer - 1);
       }, 1000);
-      console.log('If')
       return () => clearInterval(intervalId);
     } else if (!isCountdownShown) {
       setTimer(3);
       setIsCountdownShown(current => !current);
-      console.log('else')
     }
   }, [isCountdownShown, timer]);
 
@@ -70,7 +71,7 @@ function InfoChat(props : any) {
   );
 
   return (
-    <div className={props.isRecActive ? '' : 'infoChat'}>
+    <div className={count ? '' : 'infoChat'}>
       <span style={{display: !isPopUpShown ? 'none' : 'flex'}} className="infoChat_popup-modal">
         <span className='infoChat_popup infoChat_popup-modal_inner'>
             <h3 className='infoChat_popup-title'>
@@ -88,7 +89,7 @@ function InfoChat(props : any) {
             </div>
         </span>
       </span>
-      <img style={{display: props.isRecActive ? 'none' : 'flex'}} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
+      <img style={{display: count ? 'none' : 'flex'}} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
       <div style={{display: !isDropdownShown || timer === 0 ? 'none' : 'flex'}} className="countdown">
         <div className='countdown_inner'>
           {timer}
