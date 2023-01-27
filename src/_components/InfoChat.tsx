@@ -82,7 +82,7 @@ function InfoChat(props: any) {
             Having an issue? Send <br className='infoChat_popup-title-break'></br> us a recording of it!
           </h3>
           <div>
-            <span onClick={OpenDropdown}>
+            <span className='infoChat_popup-dropdown-input' onClick={OpenDropdown}>
               <span className='infoChat_popup-dropdown'>{selectedValue}</span>
               <span className={!isDropdownShown ? 'infoChat_popup-dropdown-opened' : 'infoChat_popup-dropdown-closed'}></span>
             </span>

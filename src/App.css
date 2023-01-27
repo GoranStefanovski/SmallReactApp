@@ -67,6 +67,10 @@
   line-height: 135.9%;
 }
 
+.infoChat_popup-dropdown-input:hover {
+  cursor: pointer;
+}
+
 .infoChat_popup-dropdown {
   color: white;
   font-family: 'Montserrat';
