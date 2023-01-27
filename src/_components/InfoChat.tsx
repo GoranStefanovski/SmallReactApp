@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import closeBtn from '../../src/assets/black_close.svg';
 import { toggle } from '../../src/features/recording/recordingSlice'
 import { isMessage } from '../../src/features/message/messageSlice'
+import { isCountdownActive } from '../../src/features/countdown/countdownSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { isCounting } from '../../src/features/counting/countingSlice'
 
 function InfoChat(props: any) {
+  const isCountdown = useSelector((state: any) => state.countdown.value);
+  const isCounting = useSelector((state: any) => state.counting.value);
   const isRecording = useSelector((state: any) => state.recording.value);
   const dispatch = useDispatch();
   var dropdownClass = '';
@@ -20,7 +22,6 @@ function InfoChat(props: any) {
   const [isPopUpShown, setIsPopUpShown] = useState(false);
   const [isDropdownShown, setIsDropdownShown] = useState(false);
   const [selectedValue, setIsselectedValue] = useState('Recordings');
-  const [isCountdownShown, setIsCountdownShown] = useState(false);
   const [timer, setTimer] = useState(3);
 
 
@@ -35,7 +36,7 @@ function InfoChat(props: any) {
   const OpenDropdown = () => {
     setIsDropdownShown(current => !current);
     dropdownClass = 'infoChat_popup-dropdown-open'
-    console.log(dropdownClass)
+    console.log('1283971298371293817239817231982731298371298371923817')
   };
 
   function startCountdown(text: any) {
@@ -44,8 +45,8 @@ function InfoChat(props: any) {
     if (text === 'Message') {
       dispatch(isMessage());
     } else {
+      dispatch(isCountdownActive());
       setIsDropdownShown(current => !current);
-      setIsCountdownShown(current => !current);
       setTimeout(() => {
         dispatch(toggle());
         dispatch(isCounting());
@@ -55,16 +56,16 @@ function InfoChat(props: any) {
   }
 
   useEffect(() => {
-    if (isCountdownShown && timer > 0) {
+    if (isCountdown && timer > 0) {
       const intervalId = setTimeout(() => {
         setTimer(timer - 1);
       }, 1000);
       return () => clearInterval(intervalId);
-    } else if (!isCountdownShown) {
+    } else if (!isCountdown) {
       setTimer(3);
-      setIsCountdownShown(current => !current);
+      dispatch(isCountdownActive());
     }
-  }, [isCountdownShown, timer]);
+  }, [isCountdown, timer]);
 
 
   function ListItem(rec: any) {
@@ -86,7 +87,7 @@ function InfoChat(props: any) {
           </h3>
           <div>
             <span onClick={OpenDropdown}>
-            <input value={selectedValue}  className={'infoChat_popup-dropdown ' + dropdownClass} type="text" readOnly disabled/>
+              <input value={selectedValue}  className={'infoChat_popup-dropdown ' + dropdownClass} readOnly disabled/>
             </span>
             <span className='infoChat_popup_modal-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
             <ul className='infoChat_popup-list'>
@@ -101,7 +102,7 @@ function InfoChat(props: any) {
         </span>
       </span>
       <img style={{ display: isRecording ? 'none' : 'flex' }} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
-      <div style={{ display: !isDropdownShown || timer === 0 ? 'none' : 'flex' }} className="countdown">
+      <div style={{ display: !isCountdown || timer == 0 ? 'none' : 'flex' }} className="countdown">
         <div className='countdown_inner'>
           {timer}
         </div>
