@@ -15,7 +15,6 @@ function RecordingTab() {
     const dispatch = useDispatch();
     const closePopUp = () => {
         dispatch(toggle())
-        dispatch(isMessageTrue())
     };
 
     function pauseRecording() {

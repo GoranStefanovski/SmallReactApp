@@ -166,8 +166,9 @@
 .send_rec-inner_text {
   text-align: center;
   font-weight: 500;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 40px;
+  line-height: 49px;
+  margin-top: 0;
 }
 
 .send_rec-inner_btn {
@@ -192,10 +193,27 @@
   cursor: pointer;
 }
 
-.send_rec-inner > img {
+.send_rec-inner > span > img {
   border: 1px solid #007FFF;
   border-radius: 20px;
   margin: 0 auto;
+  margin-top: 30px;
+}
+
+.send_rec-inner > span {
+  display: flex;
+  align-items: flex-start;
+}
+
+.send_rec-inner-close {
+  position: relative;
+  right: -7%;
+  top: 22px;
+  display: flex;
+}
+
+.send_rec-inner-close_final {
+  right: -11% !important;
 }
 
 .send_rec-inner > textarea {
@@ -326,6 +344,12 @@
     margin-bottom: -26%;
     width: 410px;
     margin-top: -34%;
+  }
+
+  .send_rec-inner_text {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
   }
 
   .infoChat_popup-modal-ative {
