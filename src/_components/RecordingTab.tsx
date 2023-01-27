@@ -1,5 +1,6 @@
 import pauseBtn from '../../src/assets/Pause.svg'
 import StopBtn from '../../src/assets/Stop.svg'
+import PlayBtn from '../../src/assets/play.svg'
 import CloseBtn from '../../src/assets/Close.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggle } from '../../src/features/recording/recordingSlice'
@@ -37,7 +38,7 @@ function RecordingTab() {
                 <MyStopwatch runing={false}></MyStopwatch>
             </span>
             <span onClick={pauseRecording} className='control recording-pause recording_inner-rotate'>
-                <img src={pauseBtn} alt=""/>
+                <img src={isCounting ? PlayBtn : pauseBtn} alt=""/>
             </span>
             <span onClick={stopRecording} className='control recording-stop recording_inner-rotate'>
             <img  src={StopBtn} alt=""/>

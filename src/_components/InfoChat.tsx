@@ -1,20 +1,20 @@
 import React from 'react';
 import info from '../assets/info.svg'
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import closeBtn from '../../src/assets/black_close.svg';
 import { toggle } from '../../src/features/recording/recordingSlice'
 import { isMessage } from '../../src/features/message/messageSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { isCounting } from '../../src/features/counting/countingSlice'
 
-function InfoChat(props : any) {
+function InfoChat(props: any) {
   const isRecording = useSelector((state: any) => state.recording.value);
   const dispatch = useDispatch();
   var dropdownClass = '';
   var recordings = [
-    {id: 1, text: 'Message with recording', state: 'Recording'},
-    {id: 2, text: 'Message with audio only', state: 'Audio'},
-    {id: 3, text: 'Message only', state: 'Message'},
+    { id: 1, text: 'Message with recording', state: 'Recording' },
+    { id: 2, text: 'Message with audio only', state: 'Audio' },
+    { id: 3, text: 'Message only', state: 'Message' },
   ];
 
   const [isPopUpShown, setIsPopUpShown] = useState(false);
@@ -35,6 +35,7 @@ function InfoChat(props : any) {
   const OpenDropdown = () => {
     setIsDropdownShown(current => !current);
     dropdownClass = 'infoChat_popup-dropdown-open'
+    console.log(dropdownClass)
   };
 
   function startCountdown(text: any) {
@@ -65,10 +66,10 @@ function InfoChat(props : any) {
     }
   }, [isCountdownShown, timer]);
 
-  
-  function ListItem(rec : any) {
-    return  <li onClick={() => startCountdown(rec.value)} value={rec.id} key={rec.id}>
-      {rec.text} 
+
+  function ListItem(rec: any) {
+    return <li onClick={() => startCountdown(rec.value)} value={rec.id} key={rec.id}>
+      {rec.text}
     </li>
   }
 
@@ -78,27 +79,29 @@ function InfoChat(props : any) {
 
   return (
     <div className={isRecording ? '' : 'infoChat'}>
-      <span style={{display: !isPopUpShown ? 'none' : 'flex'}} className="infoChat_popup-modal">
+      <span style={{ display: !isPopUpShown ? 'none' : 'flex' }} className="infoChat_popup-modal">
         <span className='infoChat_popup infoChat_popup-modal_inner'>
-            <h3 className='infoChat_popup-title'>
-              Having an issue? Send <br className='infoChat_popup-title-break'></br> us a recording of it!
-            </h3>
-            <div>
-              <input value={selectedValue} onClick={OpenDropdown} className={'infoChat_popup-dropdown ' + dropdownClass} type="text" readOnly />
-               <span className='infoChat_popup_modal-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
-              <ul className='infoChat_popup-list'>
-                {!isDropdownShown ? listItems : ''}
+          <h3 className='infoChat_popup-title'>
+            Having an issue? Send <br className='infoChat_popup-title-break'></br> us a recording of it!
+          </h3>
+          <div>
+            <span onClick={OpenDropdown}>
+            <input value={selectedValue}  className={'infoChat_popup-dropdown ' + dropdownClass} type="text" readOnly disabled/>
+            </span>
+            <span className='infoChat_popup_modal-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
+            <ul className='infoChat_popup-list'>
+              {!isDropdownShown ? listItems : ''}
+            </ul>
+            {isPopUpShown ? <div className='infoChat_popup-list-md-wrap'>
+              <ul className='infoChat_popup-list-md'>
+                {listItems}
               </ul>
-              {isPopUpShown ? <div className='infoChat_popup-list-md-wrap'>
-                <ul className='infoChat_popup-list-md'>
-                   {listItems} 
-                </ul>
-              </div> : ''}
-            </div>
+            </div> : ''}
+          </div>
         </span>
       </span>
-      <img style={{display: isRecording ? 'none' : 'flex'}} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
-      <div style={{display: !isDropdownShown || timer === 0 ? 'none' : 'flex'}} className="countdown">
+      <img style={{ display: isRecording ? 'none' : 'flex' }} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
+      <div style={{ display: !isDropdownShown || timer === 0 ? 'none' : 'flex' }} className="countdown">
         <div className='countdown_inner'>
           {timer}
         </div>
