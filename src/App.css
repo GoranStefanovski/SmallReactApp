@@ -361,6 +361,14 @@
     display: none;
   }
 
+  .infoChat_popup-dropdown-opened {
+    display: none;
+  }
+
+  .infoChat_popup-dropdown-closed {
+    display: none;
+  }
+
   .infoChat_popup {
     display: grid !important;
   }
