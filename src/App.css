@@ -25,7 +25,7 @@
   border-radius: 50%;
   position: fixed;
   right: 80px;
-  bottom: 68px;
+  bottom: 78px;
 }
 
 .infoChat_popup {
@@ -68,9 +68,26 @@
 }
 
 .infoChat_popup-dropdown {
-  background: url('../src/assets/arrow_down.svg');
+  color: white;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  width: 119px;
+  height: 38px;
+  background-color: #007FFF;
+  border: 1px solid #007FFF;
+  border-radius: 6px 0 0 6px;
+  width: 119px;
+  height: 38px;
+  padding: 13px 38px 13px 10px;
+}
+
+.infoChat_popup-dropdown-opened {
+  background: url('../src/assets/arrow_up.svg');
   background-repeat: no-repeat;
-  background-position: 90% 53%;
+  background-position: 50% 50%;
   color: white;
   font-family: 'Montserrat';
   font-style: normal;
@@ -81,13 +98,26 @@
   height: 38px;
   background-color: #0766C7;
   border: 1px solid #007FFF;
-  border-radius: 6px;
+  border-radius: 0 6px 6px 0;
+  padding: 13px 20px 13px 10px;
 }
 
-.infoChat_popup-dropdown-open {
-  background: url('../src/assets/arrow_down.svg') !important;
+.infoChat_popup-dropdown-closed {
+  background: url('../src/assets/arrow_down.svg');
   background-repeat: no-repeat;
-  background-position: 90% 53%;
+  background-position: 50% 50%;
+  color: white;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  width: 119px;
+  height: 38px;
+  background-color: #0766C7;
+  border: 1px solid #007FFF;
+  border-radius: 0 6px 6px 0;
+  padding: 13px 20px 13px 10px;
 }
 
 .infoChat_popup-list {
@@ -99,6 +129,7 @@
   box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   width: 120%;
+  margin-top: 15px;
 }
 
 

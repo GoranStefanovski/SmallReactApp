@@ -1,11 +1,8 @@
 import IssueReported from '../assets/IssueReported.svg'
-import { useDispatch } from 'react-redux'
-import { isMessage } from '../../src/features/message/messageSlice'
 import closeBtn from '../../src/assets/black_close.svg';
 function FinalStep(props: any) {
-  const dispatch = useDispatch();
   function sendIssue() {
-        props.setItFinalStep(false)
+    props.setItFinalStep(false)
   }
   const closePopUp = () => {
     props.setItFinalStep(false)

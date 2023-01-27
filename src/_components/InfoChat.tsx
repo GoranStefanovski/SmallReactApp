@@ -12,7 +12,6 @@ function InfoChat(props: any) {
   const isCounting = useSelector((state: any) => state.counting.value);
   const isRecording = useSelector((state: any) => state.recording.value);
   const dispatch = useDispatch();
-  var dropdownClass = '';
   var recordings = [
     { id: 1, text: 'Message with recording', state: 'Recording' },
     { id: 2, text: 'Message with audio only', state: 'Audio' },
@@ -35,8 +34,6 @@ function InfoChat(props: any) {
 
   const OpenDropdown = () => {
     setIsDropdownShown(current => !current);
-    dropdownClass = 'infoChat_popup-dropdown-open'
-    console.log('1283971298371293817239817231982731298371298371923817')
   };
 
   function startCountdown(text: any) {
@@ -52,7 +49,6 @@ function InfoChat(props: any) {
         dispatch(isCounting());
       }, 3000);
     }
-    dropdownClass = '';
   }
 
   useEffect(() => {
@@ -87,7 +83,8 @@ function InfoChat(props: any) {
           </h3>
           <div>
             <span onClick={OpenDropdown}>
-              <input value={selectedValue}  className={'infoChat_popup-dropdown ' + dropdownClass} readOnly disabled/>
+              <span className='infoChat_popup-dropdown'>{selectedValue}</span>
+              <span className={!isDropdownShown ? 'infoChat_popup-dropdown-opened' : 'infoChat_popup-dropdown-closed'}></span>
             </span>
             <span className='infoChat_popup_modal-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
             <ul className='infoChat_popup-list'>
@@ -102,7 +99,7 @@ function InfoChat(props: any) {
         </span>
       </span>
       <img style={{ display: isRecording ? 'none' : 'flex' }} onClick={OpenPopUp} src={info} className="" alt="Info Icon" />
-      <div style={{ display: !isCountdown || timer == 0 ? 'none' : 'flex' }} className="countdown">
+      <div style={{ display: !isCountdown || timer === 0 ? 'none' : 'flex' }} className="countdown">
         <div className='countdown_inner'>
           {timer}
         </div>
