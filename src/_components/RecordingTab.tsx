@@ -7,6 +7,7 @@ import { toggle } from '../../src/features/recording/recordingSlice'
 import { isMessageTrue } from '../../src/features/message/messageSlice';
 import { isCountingPaused } from '../../src/features/counting/countingSlice';
 import MyStopwatch from './MyStopwatch'
+import Draggable from 'react-draggable'; 
 
 
 function RecordingTab() {
@@ -31,6 +32,7 @@ function RecordingTab() {
     }
     
   return (
+    <Draggable>
     <div style={{display: isRecording ? 'flex' : 'none'}} className='recording'>
         <div className='recording_inner'>
             <span onClick={continueRecording} className='recording-time recording_inner-rotate'>
@@ -47,6 +49,7 @@ function RecordingTab() {
             </span>
         </div>
     </div>
+    </Draggable>
   )
 }
 

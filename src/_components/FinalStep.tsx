@@ -6,7 +6,6 @@ function FinalStep(props: any) {
   const dispatch = useDispatch();
   function sendIssue() {
         props.setItFinalStep(false)
-        dispatch(isMessage())
   }
   const closePopUp = () => {
     props.setItFinalStep(false)
