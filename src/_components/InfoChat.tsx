@@ -12,11 +12,11 @@ function InfoChat(props: any) {
   const isRecording = useSelector((state: any) => state.recording.value);
   const dispatch = useDispatch();
   var recordings = [
-    { id: 1, text: 'Message with recording', state: 'Recording' },
+    { id: 1, text: 'Message with recording', state: 'Recordings' },
     { id: 2, text: 'Message with audio only', state: 'Audio' },
     { id: 3, text: 'Message only', state: 'Message' },
   ];
-
+  var selected = ''
   const [isPopUpShown, setIsPopUpShown] = useState(false);
   const [isDropdownShown, setIsDropdownShown] = useState(false);
   const [selectedValue, setIsselectedValue] = useState('Recordings');
@@ -63,7 +63,7 @@ function InfoChat(props: any) {
 
 
   function ListItem(rec: any) {
-    return <li onClick={() => startCountdown(rec.value)} value={rec.id} key={rec.id}>
+    return <li className={`${selectedValue === rec.value ? 'active' : ''}`}  onClick={() => startCountdown(rec.value)} value={rec.id} key={rec.id}>
       {rec.text}
     </li>
   }
