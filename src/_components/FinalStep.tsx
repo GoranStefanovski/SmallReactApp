@@ -9,18 +9,20 @@ function FinalStep(props: any) {
   }
 
   return (
-    <div className='countdown'>
-        <div className='send_rec-inner'>
-          <span>
-            <img className='send_rec-inner-img send_rec-inner-img-no_border' src={IssueReported} alt="Placeholder"/>
-            <span className='send_rec-inner-close send_rec-inner-close_final'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
-          </span>
-            <p className='send_rec-inner_text'>Issue Successful Reported</p>
-            <span>
-            <button onClick={sendIssue} className='send_rec-inner_btn send_rec-inner_btn-no--border'>Done</button>
-          </span>
-        </div>
+  <div className='modal-wrapper'>
+    <div className='modal-wrapper__inner'>
+      <div className='modal-header'>
+          <span className='modal-close_btn'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
+      </div>   
+      <div className='modal-body modal-body_final-step'>
+          <img src={IssueReported} alt="Placeholder"/>
+          <p>Issue Successful Reported</p>
+      </div>
+      <div className='modal-footer'>
+        <button onClick={sendIssue} className='modal-footer-button'>Done</button>
+      </div>
     </div>
+  </div>
   )
 }
 

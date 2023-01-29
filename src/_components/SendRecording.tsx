@@ -14,17 +14,19 @@ function SendRecording(props: any) {
     dispatch(isMessage());
   }
   return (  
-    <div className='countdown'>
-        <div className='send_rec-inner'>
-          <span>
-            <img src={placeholder} alt="Placeholder"/>
-            <span className='send_rec-inner-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
-          </span>
-            <textarea placeholder="Please write a message"/>
-          <span>
-            <button onClick={sendMessage} className='send_rec-inner_btn send_rec-inner_btn-no--border'>Send</button>
-          </span>
+    <div className='modal-wrapper'>
+      <div className='modal-wrapper__inner'>
+        <div className='modal-header'>
+          <span className='modal-close_btn'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
+        </div>   
+        <div className='modal-body'>
+          <img src={placeholder} alt="Placeholder"/>
+          <textarea placeholder="Please write a message"/>
         </div>
+        <div className='modal-footer'>
+          <button onClick={sendMessage} className='modal-footer-button'>Send</button>
+        </div>
+      </div>
     </div>
   )
 }

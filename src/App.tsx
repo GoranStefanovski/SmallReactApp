@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import './App.css';
+import '../src/assets/css/_modal.css'
 import InfoChat from './_components/InfoChat';
 import RecordingTab from './_components/RecordingTab';
 import SendRecording from './_components/SendRecording';
