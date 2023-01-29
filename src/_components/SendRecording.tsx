@@ -19,11 +19,11 @@ function SendRecording(props: any) {
           <span>
             <img src={placeholder} alt="Placeholder"/>
             <span className='send_rec-inner-close'><img onClick={closePopUp} src={closeBtn} alt="" /></span>
-            </span>
+          </span>
             <textarea placeholder="Please write a message"/>
-           <span>
-           <button onClick={sendMessage} className='send_rec-inner_btn send_rec-inner_btn-no--border'>Send</button>
-            </span>
+          <span>
+            <button onClick={sendMessage} className='send_rec-inner_btn send_rec-inner_btn-no--border'>Send</button>
+          </span>
         </div>
     </div>
   )

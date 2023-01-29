@@ -252,7 +252,7 @@
 }
 
 .send_rec-inner > textarea {
-  width: 487.3px;
+  width: 93%;
   height: 100.59px;
   border: none;
   border-radius: 20px;
@@ -496,7 +496,10 @@
     border-radius: 5%;
   }
 }
-
+.draggable {
+  position: absolute;
+  cursor: move;
+}
 @media only screen and (max-width: 480px) {
   .infoChat {
     width: 60px;
@@ -513,6 +516,13 @@ font-size: 60px;
 line-height: 73px;
   }
 
+  .recording_inner {
+    width: 100%;
+    flex-wrap: wrap;
+    display: grid;
+    padding: 22px;
+    align-self: stretch;
+  }
   .send_rec-inner {
     width: 80%;
     height: 372px;
@@ -532,7 +542,6 @@ line-height: 73px;
     width: 80%;
     margin: 0 auto;
     height: 65.59px;
-    margin-top: -20px;
   }
 
   .infoChat_popup-list > li {
@@ -591,19 +600,22 @@ line-height: 73px;
   }
 
   .recording_inner-rotate {
-    rotate: 270deg;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
   }
   
   .recording {
-    width: 186px;
-    height: 61px;
-    rotate: 90deg;
+    width: 61px;
+    height: 186px;
     top: 20%;
     top: 120px;
-    right: -50px;
+    right: 20px;
+  }
+  
+  .send_rec-inner > span > img {
+    width: 80%;
+    margin-top: 0;
   }
 
   .send_rec-inner_btn {
@@ -619,4 +631,21 @@ line-height: 73px;
     width: 248px;
     height: 248px;
   }
+
+  .send_rec-inner-close {
+    right: 5%;
+    top: 5%;
+  }
+
+  .send_rec-inner-close > img {
+    width:17px;
+    height: 17px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .send_rec-inner-close_final {
+    right: 5% !important;
+  }
+  
 }

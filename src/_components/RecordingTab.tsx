@@ -19,23 +19,19 @@ function RecordingTab() {
     };
 
     function pauseRecording() {
-        dispatch(isCountingPaused())
+        dispatch(isCountingPaused());
     }
 
     function stopRecording() {
         dispatch(toggle())
         dispatch(isMessageTrue())
     }
-
-    function continueRecording() {
-        dispatch(isCountingPaused())
-    }
     
   return (
     <Draggable>
     <div style={{display: isRecording ? 'flex' : 'none'}} className='recording'>
         <div className='recording_inner'>
-            <span onClick={continueRecording} className='recording-time recording_inner-rotate'>
+            <span className='recording-time recording_inner-rotate'>
                 <MyStopwatch runing={false}></MyStopwatch>
             </span>
             <span onClick={pauseRecording} className='control recording-pause recording_inner-rotate'>
