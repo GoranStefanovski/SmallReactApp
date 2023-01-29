@@ -28,7 +28,11 @@ function RecordingTab() {
     }
     
   return (
-    <Draggable>
+    <Draggable axis="x"
+    handle=".handle"
+    defaultPosition={{x: 0, y: 0}}
+    grid={[25, 25]}
+    scale={1}>
     <div style={{display: isRecording ? 'flex' : 'none'}} className='recording'>
         <div className='recording_inner'>
             <span className='recording-time recording_inner-rotate'>

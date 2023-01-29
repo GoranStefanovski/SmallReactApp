@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 function InfoChat(props: any) {
   const isCountdown = useSelector((state: any) => state.countdown.value);
-  const isCounting = useSelector((state: any) => state.counting.value);
   const isRecording = useSelector((state: any) => state.recording.value);
   const dispatch = useDispatch();
   var recordings = [
@@ -46,7 +45,6 @@ function InfoChat(props: any) {
       setIsDropdownShown(current => !current);
       setTimeout(() => {
         dispatch(toggle());
-        dispatch(isCounting());
       }, 3000);
     }
   }
