@@ -17,7 +17,6 @@
 .modal-wrapper__inner {
     border-radius: 31px;
     max-height: 100%;
-    overflow-y: auto;
     background: #fff;
     box-shadow: 0 0 10px rgb(0 0 0 / 50%);
     animation: slid;

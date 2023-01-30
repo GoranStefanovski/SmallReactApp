@@ -8,15 +8,14 @@ import { isCountdownActive } from '../../src/features/countdown/countdownSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 function InfoChat(props: any) {
+  const dispatch = useDispatch();
   const isCountdown = useSelector((state: any) => state.countdown.value);
   const isRecording = useSelector((state: any) => state.recording.value);
-  const dispatch = useDispatch();
   var recordings = [
     { id: 1, text: 'Message with recording', state: 'Recordings' },
     { id: 2, text: 'Message with audio only', state: 'Audio' },
     { id: 3, text: 'Message only', state: 'Message' },
   ];
-  var selected = ''
   const [isPopUpShown, setIsPopUpShown] = useState(false);
   const [isDropdownShown, setIsDropdownShown] = useState(false);
   const [selectedValue, setIsselectedValue] = useState('Recordings');
@@ -73,9 +72,10 @@ function InfoChat(props: any) {
   );
 
   return (
+    <div className={isPopUpShown ? 'modal-wrapper' : ''}>
     <div className={isRecording ? '' : 'infoChat'}>
       <span style={{ display: !isPopUpShown ? 'none' : 'flex' }} className="infoChat_popup-modal">
-        <span className='infoChat_popup infoChat_popup-modal_inner'>
+        <span className='infoChat_popup infoChat_popup-modal_inner '>
           <h3 className='infoChat_popup-title'>
             Having an issue? Send <br className='infoChat_popup-title-break'></br> us a recording of it!
           </h3>
@@ -102,6 +102,7 @@ function InfoChat(props: any) {
           {timer}
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -347,6 +347,10 @@
   line-height: 27px;
 }
 
+.infoChat_popup-list-md > li:hover {
+  cursor: pointer;
+}
+
 .send_rec-inner-img-no_border {
   border: none !important;
 }
@@ -485,8 +489,8 @@
   }
   .infoChat_popup-list-md {
     display: block;
-    padding: 15px 0 15px 0;
-    margin-top: -12%;
+    padding: 40px 0 40px 0;
+    margin-top: -19%;
   }
 
   .infoChat_popup-list-md > li {
@@ -501,6 +505,10 @@
     border-radius: 7px;
     color: white;
   }
+
+.infoChat_popup::after {
+  display: none;
+}
 }
 
 @media only screen and (max-width: 480px) {
