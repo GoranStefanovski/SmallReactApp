@@ -32,12 +32,11 @@ function RecordingTab() {
     
   return (
     <Draggable
-    handle=".ctr"
-    defaultPosition={{x: 0, y: 0}}
+    handle=".recording"
     scale={1}>
         <div  style={{display: isRecording ? 'flex' : 'none'}} className='recording'>
             <div className='recording_inner'>
-                <span className='recording-time recording_inner-rotate ctr'>
+                <span className='recording-time recording_inner-rotate'>
                     <MyStopwatch runing={false}></MyStopwatch>
                 </span>
                 <span onClick={pauseRecording} className='control recording-pause recording_inner-rotate'>

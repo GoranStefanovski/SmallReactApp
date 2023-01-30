@@ -28,6 +28,10 @@
   bottom: 78px;
 }
 
+.infoChat:hover {
+  cursor: pointer;
+}
+
 .infoChat_popup {
   display: flex;
   align-items: center;
@@ -277,6 +281,10 @@
   top: 2%;
   right: 2%;
   position: fixed;
+}
+
+.recording:hover {
+  cursor: move;
 }
 
 .recording_inner {
