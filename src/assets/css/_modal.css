@@ -33,6 +33,10 @@
     margin-right: -15px;
 }
 
+.modal-close_btn > img {
+    width: 23px;
+}
+
 .modal-body {
     display: grid;
     padding: 0 0 20px 0;
