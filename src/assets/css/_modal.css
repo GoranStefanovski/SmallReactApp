@@ -33,6 +33,10 @@
     margin-right: -15px;
 }
 
+.modal-close_btn:hover {
+    cursor: pointer;
+}
+
 .modal-close_btn > img {
     width: 23px;
 }
