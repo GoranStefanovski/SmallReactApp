@@ -11,8 +11,9 @@ import { useEffect, useRef } from 'react'
 import Draggable from 'react-draggable'; 
 
 function RecordingTab() {
-    const isRecording = useSelector((state: any) => state.recording.value)
-    const isCounting = useSelector((state: any) => state.counting.isCountingPaused)
+    const isRecording = useSelector((state: any) => state.recording.value);
+    const isCounting = useSelector((state: any) => state.counting.isCountingPaused);
+    const windowSize = useRef([window.innerWidth, window.innerHeight]);
     const dispatch = useDispatch();
     const closePopUp = () => {
         dispatch(toggle())
@@ -32,7 +33,7 @@ function RecordingTab() {
     
   return (
     <Draggable
-    handle=".recording"
+    handle={window.innerWidth > 780 ? '.recording' : '.recording-time'}
     scale={1}>
         <div  style={{display: isRecording ? 'flex' : 'none'}} className='recording'>
             <div className='recording_inner'>
