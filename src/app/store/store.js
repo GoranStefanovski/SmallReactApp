@@ -3,6 +3,7 @@ import recordingReducer from '../../features/recording/recordingSlice'
 import isMessageReducer from '../../features/message/messageSlice'
 import isCountingReducer from '../../features/counting/countingSlice'
 import isCountdownReducer from '../../features/countdown/countdownSlice'
+import logger from 'redux-logger'
 
 export default configureStore({
   reducer: {
@@ -11,4 +12,5 @@ export default configureStore({
     counting: isCountingReducer,
     countdown: isCountdownReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })
